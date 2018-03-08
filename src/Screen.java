@@ -36,6 +36,9 @@ public class Screen extends JFrame implements ActionListener {
         String fortune = fortunes[(int) (fortunes.length * Math.random())];
         display.setText("  " + fortune);
         ding.play();
+
+            //
+
     }
 
     public static void main(String[] args) {
