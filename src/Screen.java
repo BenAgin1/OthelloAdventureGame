@@ -8,14 +8,15 @@ import javax.swing.*;
 public class Screen extends JFrame implements ActionListener
 {
     private static final EasySound ding = new EasySound("ding.wav");
+    //private static final EasySound damn = new EasySound("ding.wav");
 
     public final int MAX_NUMBER_ROWS= 5;
     public final int MAX_NUMBER_COLS=30;
 
-    AdventureQuestion[] questions= {new AdventureQuestion("Whats up?", "123242nothing much", "674839Hillll", "984523HUihefsef")};
+    AdventureQuestion[] questions= {new AdventureQuestion("Whats up?", "123242nothing much", "674839Hillll", "984523HUihefsef"),new AdventureQuestion("Whats up2?", "123242nothing much2", "674839Hillll2", "984523HUihefsef2")};
 
     // Declare an array of "fortunes" (strings):
-    String[] fortunes = {"You will be happy for today only. eifjiesjfoisejfiejijsieofjiosej foisejfoisejfoisjefoiseo ifjisoejf", "You find Desdemona sleeping in bed, what do you do?", "You will find happiness.", "You will find peace."};
+    //String[] fortunes = {"You will be happy for today only. eifjiesjfoisejfiejijsieofjiosej foisejfoisejfoisjefoiseo ifjisoejf", "You find Desdemona sleeping in bed, what do you do?", "You will find happiness.", "You will find peace."};
     public int questionPlace=0;
 
     AdventureQuestion questionNow = questions[questionPlace];
@@ -140,8 +141,11 @@ public class Screen extends JFrame implements ActionListener
 
         //questionNow
 
-        displayQ.setText("  " + questions[questionPlace].getQuestion());
+        displayQ.setText(questions[questionPlace].getQuestion());
         displayB.setText(questions[questionPlace].getAnswerB());
+        displayA.setText(questions[questionPlace].getAnswerA());
+        displayC.setText(questions[questionPlace].getAnswerC());
+
         ding.play();
 
         //

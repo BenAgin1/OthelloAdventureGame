@@ -18,17 +18,17 @@ public class AdventureQuestion
 
     public  String getAnswerA()
     {
-        return answerA.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
+        return answerA;//.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
     }
 
     public  String getAnswerB()
     {
-        return answerB.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
+        return answerB;//.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
     }
 
     public String getAnswerC()
     {
-        return answerC.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
+        return answerC;//.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
     }
     public  int getEffects(int whichBar, String answer) //0, 2, 4 for each bar
     {
