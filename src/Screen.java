@@ -168,7 +168,7 @@ public class Screen extends JFrame implements ActionListener
 //        catch(IOException c)
 //
 //        {System.exit(3);}
-
+//
 
         questionPlace++;
 
