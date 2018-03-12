@@ -60,11 +60,13 @@ public class Screen extends JFrame implements ActionListener
 
         displayQ = new JTextArea(MAX_NUMBER_ROWS,MAX_NUMBER_COLS);
         displayQ.setLineWrap(true);
+
         displayQ.setWrapStyleWord(true);
         displayQ.setText("Welcome to the Othello \"Choose Your Adventure\" Game! \n\n Made By: Ben Agin and  Sarah Zhang");
         displayQ.setBackground(Color.WHITE);
         displayQ.setEditable(false);
-
+        Color black= new Color(200,200,200);
+        displayQ.setBackground(black);
 
 
         //JButton buttonA = new JButton("A");
@@ -190,9 +192,21 @@ public class Screen extends JFrame implements ActionListener
         displayA.setText(questions[questionPlace].getAnswerA().substring(6));
         displayC.setText(questions[questionPlace].getAnswerC().substring(6));
 
-        buttonC.setToolTipText(questionNow.getAnswerC().substring(0,2)+" "+ questionNow.getAnswerC().substring(2,4)+" "+ questionNow.getAnswerC().substring(4,6));
-        buttonB.setToolTipText(questionNow.getAnswerB().substring(0,2)+" "+ questionNow.getAnswerB().substring(2,4)+" "+ questionNow.getAnswerB().substring(4,6));
-        buttonA.setToolTipText(questionNow.getAnswerA().substring(0,2)+" "+ questionNow.getAnswerA().substring(2,4)+" "+ questionNow.getAnswerA().substring(4,6));
+        int buttonCInfo1= Integer.parseInt(questionNow.getAnswerC().substring(0,2)+50);
+        int buttonAInfo= questionNow.getEffects(0, questionNow.getAnswerC())-50;
+
+//        int buttonCInfo1= Integer.parseInt(questionNow.getAnswerC().substring(0,2)+50);
+//        int buttonCInfo1= Integer.parseInt(questionNow.getAnswerC().substring(0,2)+50);
+
+        buttonA.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerA())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerA())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerA())-50));
+        buttonB.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerB())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerB())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerB())-50));
+        buttonC.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerC())-50));
+
+
+
+// buttonB.setToolTipText(questionNow.getAnswerB().substring(0,2)+" "+ questionNow.getAnswerB().substring(2,4)+" "+ questionNow.getAnswerB().substring(4,6));
+//        buttonA.setToolTipText(questionNow.getAnswerA().substring(0,2)+" "+ questionNow.getAnswerA().substring(2,4)+" "+ questionNow.getAnswerA().substring(4,6));
+
 
         ding.play();
 
@@ -244,7 +258,8 @@ public class Screen extends JFrame implements ActionListener
 //            picLabel.setBounds(0,0,385,442);
 //        }
 //        catch(IOException e)
-
-        //{System.exit(3);}
+//
+//
+//        {System.exit(3);}
     }
 }
