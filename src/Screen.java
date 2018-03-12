@@ -23,10 +23,11 @@ public class Screen extends JFrame implements ActionListener
 
     AdventureQuestion[] questions= //add the questions here, and effects as well
     {//I will edit it later to not show the numbers right in front.
-            new AdventureQuestion("THIS IS A FILL, WONT SHOW", "123242nothing much", "674839Hillll", "984523HUihefsef"),
-            new AdventureQuestion("Whats up2?", "123242nothing much2", "674839Hillll2", "123456HUihefsef2"),
-            new AdventureQuestion("You see Desdemona on the bed. What do you do?", "000099Kill her.", "101000Wake her up and talk through it.",  "000020Kill yourself.")
-
+            //NEW: above 50 is increase, below is decrease.
+            new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050nothing much", "505050Hillll", "505050HUihefsef"),
+            new AdventureQuestion("Whats up2?", "506070nothing much2", "405020Hillll2", "506050HUihefsef2"),
+            new AdventureQuestion("You see Desdemona on the bed. What do you do?", "000099Kill her.", "606030Wake her up and talk through it.",  "000020Kill yourself."),
+            new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050 ")
     };
 
     // Declare an array of "fortunes" (strings):
@@ -134,7 +135,7 @@ public class Screen extends JFrame implements ActionListener
         Sanity.setValue(100);
         Sanity.setToolTipText("How mentally sane you are");
 
-        TrustInIago.setString("TrustInIago");
+        //TrustInIago.setString("TrustInIago");
         TrustInIago.setStringPainted(true);
         TrustInIago.setValue(50);
         TrustInIago.setString("Trust in Iago");
@@ -172,15 +173,15 @@ public class Screen extends JFrame implements ActionListener
 
         questionPlace++;
 
-        if (questionPlace==questions.length)
+        if (questionPlace>=questions.length)
         {
 
+            return;
 
-            System.exit(69);
         }
 
-        if (questionPlace ==2 && TrustInIago.getValue() <= 40)
-            questionPlace++;
+        //if (questionPlace ==2 && TrustInIago.getValue() <= 40)
+         //   questionPlace++;
 
         //questionNow
         questionNow = questions[questionPlace];
@@ -193,17 +194,6 @@ public class Screen extends JFrame implements ActionListener
         buttonB.setToolTipText(questionNow.getAnswerB().substring(0,2)+" "+ questionNow.getAnswerB().substring(2,4)+" "+ questionNow.getAnswerB().substring(4,6));
         buttonA.setToolTipText(questionNow.getAnswerA().substring(0,2)+" "+ questionNow.getAnswerA().substring(2,4)+" "+ questionNow.getAnswerA().substring(4,6));
 
-        //picLabel.setBounds(0,0,385,442);
-//        try
-//        {
-//            BufferedImage myPicture = ImageIO.read(new File("/Users/benagin/Library/Mobile Documents/com~apple~CloudDocs/APCS/OthelloAdventure/68512519-cyprus-wallpapers.jpg"));
-//            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-//            window.add(picLabel);
-//            picLabel.setBounds(0,0,385,442);
-//        }
-//        catch(IOException c)
-
-        //{System.exit(3);}
         ding.play();
 
 
@@ -215,23 +205,23 @@ public class Screen extends JFrame implements ActionListener
     {
         if (ans=='a')
         {
-            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerA()));
-            Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerA()));
-            TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerA()));
+            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerA())-50);
+            Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerA())-50);
+            TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerA())-50);
 
         }
         if (ans=='b')
         {
-            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerB()));
-            Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerB()));
-            TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerB()));
+            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerB())-50);
+            Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerB())-50);
+            TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerB())-50);
 
         }
         if (ans=='c')
         {
-            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerC()));
-            Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerC()));
-            TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerC()));
+            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerC())-50);
+            Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerC())-50);
+            TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerC())-50);
 
         }
     }
