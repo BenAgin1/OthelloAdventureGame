@@ -28,8 +28,17 @@ public class Screen extends JFrame implements ActionListener
             //NEW: above 50 is increase, below is decrease.
             new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050Hillll", "505050HUihefsef"),
             new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "005050Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
+
+
+
+
+
+
             new AdventureQuestion( "You made it safely to Cyprus", "205050Throw a party to celebrate!","705050Get back to work, no time for playing.", " "),
-            new AdventureQuestion("You see Desdemona on the bed. What do you do?", "000099Kill her.", "606030Wake her up and talk through it.",  "000020Kill yourself."),
+            new AdventureQuestion("Desdemona repeatedly asks you to forgive Cassio and make him lieutenant again. How do you respond to her?","505030Forgive Cassio.","504050Put it off.","504040Ignore her."), //only if answer before was throw a party
+
+            new AdventureQuestion("Lodovico greets you and Desdemona with news from Venice. Cassio will replace you, and you must return back to Venice. What do you do?","004050Hit Desdemona.","204050Call Desdemona a Strumpet.","606020Choose not to be mad at Desdemona without good reason"),
+            new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "606000Stare at her lovingly and get into bed with her", "202080Suffocate her to death with a pillow.",  "106070Kill yourself."),
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050 ")
     };
 
