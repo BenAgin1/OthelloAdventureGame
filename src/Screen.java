@@ -211,7 +211,7 @@ public class Screen extends JFrame implements ActionListener
         buttonB.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerB())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerB())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerB ())-50));
         buttonC.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerC())-50));
 
-
+    //
 
 // buttonB.setToolTipText(questionNow.getAnswerB().substring(0,2)+" "+ questionNow.getAnswerB().substring(2,4)+" "+ questionNow.getAnswerB().substring(4,6));
 //        buttonA.setToolTipText(questionNow.getAnswerA().substring(0,2)+" "+ questionNow.getAnswerA().substring(2,4)+" "+ questionNow.getAnswerA().substring(4,6));
