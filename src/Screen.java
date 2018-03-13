@@ -39,6 +39,11 @@ public class Screen extends JFrame implements ActionListener
 
             new AdventureQuestion("Lodovico greets you and Desdemona with news from Venice. Cassio will replace you, and you must return back to Venice. What do you do?","004050Hit Desdemona.","204050Call Desdemona a Strumpet.","606020Choose not to be mad at Desdemona without good reason"),
             new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "606000Stare at her lovingly and get into bed with her", "202080Suffocate her to death with a pillow.",  "106070Kill yourself."),
+            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "250000Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
+            new AdventureQuestion( "You made it safely to Cyprus", "255050Throw a party to celebrate!","705050No time to play; Get back to work ASAP.", "505050"),
+            new AdventureQuestion( "At the party, you find Cassio drunk and fighting with Roderigo and Montano. From Iago, you learn that Cassio has injured Montano in their quarrel. How do you reprimand him?", "505080Strip Cassio of his lieutenancy.", "502050Do nothing", "505050"),
+            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "500000Vow to kill her.", "506550Wait for more evidence before making a decision", "507010Choose to trust Desdemona over Iago"),
+            new AdventureQuestion("You see Desdemona on the bed. What do you do?", "000099Kill her.", "606030Wake her up and talk through it.",  "000020Kill yourself."),
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050 ")
     };
 
