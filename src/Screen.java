@@ -1,3 +1,5 @@
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -25,8 +27,8 @@ public class Screen extends JFrame implements ActionListener
     {//I will edit it later to not show the numbers right in front.
             //NEW: above 50 is increase, below is decrease.
             new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050Hillll", "505050HUihefsef"),
-            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "250000Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
-            new AdventureQuestion( "You made it safely to Cyprus", "000000Throw a party to celebrate!",""),
+            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "005050Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
+            new AdventureQuestion( "You made it safely to Cyprus", "205050Throw a party to celebrate!","705050Get back to work, no time for playing.", " "),
             new AdventureQuestion("You see Desdemona on the bed. What do you do?", "000099Kill her.", "606030Wake her up and talk through it.",  "000020Kill yourself."),
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050 ")
     };
@@ -176,6 +178,12 @@ public class Screen extends JFrame implements ActionListener
 
         questionPlace++;
 
+        if (Respect.getValue() <= 0 )
+        {
+        questionPlace= questions.length-1;
+
+        }
+
         if (questionPlace>=questions.length)
         {
 
@@ -208,6 +216,11 @@ public class Screen extends JFrame implements ActionListener
 // buttonB.setToolTipText(questionNow.getAnswerB().substring(0,2)+" "+ questionNow.getAnswerB().substring(2,4)+" "+ questionNow.getAnswerB().substring(4,6));
 //        buttonA.setToolTipText(questionNow.getAnswerA().substring(0,2)+" "+ questionNow.getAnswerA().substring(2,4)+" "+ questionNow.getAnswerA().substring(4,6));
 
+        if (Respect.getValue() <= 0 )
+        {
+            displayA.setText("Your Reputation reached 0 because your people lost trust in you.");
+
+        }
 
         ding.play();
 
