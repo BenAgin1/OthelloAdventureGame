@@ -24,8 +24,9 @@ public class Screen extends JFrame implements ActionListener
     AdventureQuestion[] questions= //add the questions here, and effects as well
     {//I will edit it later to not show the numbers right in front.
             //NEW: above 50 is increase, below is decrease.
-            new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050nothing much", "505050Hillll", "505050HUihefsef"),
-            new AdventureQuestion("Whats up2?", "506070nothing much2", "405020Hillll2", "506050HUihefsef2"),
+            new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050Hillll", "505050HUihefsef"),
+            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "250000Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
+            new AdventureQuestion( "You made it safely to Cyprus", "000000Throw a party to celebrate!","")
             new AdventureQuestion("You see Desdemona on the bed. What do you do?", "000099Kill her.", "606030Wake her up and talk through it.",  "000020Kill yourself."),
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050 ")
     };
