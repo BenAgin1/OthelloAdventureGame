@@ -125,7 +125,7 @@ public class Screen extends JFrame implements ActionListener
 
 
         TrustInIago.setStringPainted(true);
-        TrustInIago.setValue(50);
+        TrustInIago.setValue(25);
         TrustInIago.setString("Trust in Iago");
         TrustInIago.setToolTipText("How much Trust you have in Iago, consider this when you make your choices");
         TrustInIago.setForeground(Color.GREEN);
@@ -147,22 +147,6 @@ public class Screen extends JFrame implements ActionListener
             adjustBar('c');
         }
 
-        // Pick and display a random fortune:
-
-        //String fortune = fortunes[questionPlace];
-//        try
-//        {
-//
-//            window.add(picLabel);
-//            picLabel.setBounds(0,0,385,442);
-//        }
-//        catch(IOException c)
-//
-//        {System.exit(3);}
-
-// elsewhere
-
-//
 
         if ((e.getSource()==buttonB || e.getSource()==buttonC) && questionPlace == 2) //adds another to skip drunk Cassio
         {
@@ -205,6 +189,22 @@ public class Screen extends JFrame implements ActionListener
         buttonC.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerC())-50));
 
 
+        if (questionPlace == questions.length-1)
+        {
+            if (e.getSource() == buttonA) //end game text if you get to the last question. didn't die to bars.
+            {
+                displayA.setText("You learn from Desdemona about all the lies Iago has spread and order him to be imprisoned. You and Desdemona live happily ever after.");
+            }
+            else if (e.getSource()== buttonB)
+            {
+                displayA.setText("You kill Desdemona for supposedly cheating on you. Emilia walks in and turns you in to the authorities. You get imprisoned for the rest of your life.");
+            }
+            else
+            {
+                displayA.setText("Iago got his revenge, for you are left heartbroken and hysterical. You killed yourself and gave into Iago's manipulation.");
+            }
+        }
+
         if (Respect.getValue() <= 0 )
         {
             displayA.setText("Your Reputation reached 0 because your people lost trust in you.");
@@ -222,24 +222,6 @@ public class Screen extends JFrame implements ActionListener
             displayA.setText("Your Trust in Iago Bar has reached 100, so high that Iago abused your friendship to kill you.");
 
         }
-
-        if (questionPlace == questions.length-1)
-        {
-            if (e.getSource() == buttonA) //end game text if you get to the last question. didn't die to bars.
-            {
-                displayA.setText("You learn from Desdemona about all the lies Iago has spread and order him to be imprisoned. You and Desdemona live happily ever after.");
-            }
-            else if (e.getSource()== buttonB)
-            {
-                displayA.setText("You kill Desdemona for supposedly cheating on you. Emilia walks in and turns you in to the authorities. You get imprisoned for the rest of your life.");
-            }
-            else
-            {
-                displayA.setText("Iago got his revenge, for you are left heartbroken and hysterical. You killed yourself and gave into Iago's manipulation.");
-            }
-        }
-
-
 
         ding.play();
 
