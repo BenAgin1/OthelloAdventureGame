@@ -1,26 +1,20 @@
-import com.sun.org.apache.regexp.internal.RE;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Screen extends JFrame implements ActionListener
 {
     private static final EasySound ding = new EasySound("ding.wav");
 
-    private final int MAX_NUMBER_ROWS= 5;
-    private final int MAX_NUMBER_COLS=30;
+    private static final int MAX_NUMBER_ROWS= 5;
+    private static final int MAX_NUMBER_COLS=30;
 
-    AdventureQuestion[] questions= //add the questions here, and effects as well
+    private AdventureQuestion[] questions= //add the questions here, and effects as well
     {//I will edit it later to not show the numbers right in front.
             //NEW: above 50 is increase, below is decrease.
-            new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050Hillll", "505050HUihefsef"),
-            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "305050Avoid the question", "605050Politely deny it", "202050Attack Barbantio"),
+            new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050 ", "505050 "),
+            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venetian senate is watching. How do you respond?", "305050Avoid the question", "605050Politely deny it", "202050Attack Barbantio"),
             new AdventureQuestion( "You made it safely to Cyprus", "405060Throw a party to celebrate!","605050Get back to work, no time for playing.", "505050 "),
             new AdventureQuestion( "At the party, you find Cassio drunk and fighting with Roderigo and Montano. From Iago, you learn that Cassio has injured Montano in their quarrel. How do you reprimand him?", "504080Strip Cassio of his lieutenancy.", "605050Do nothing", "505050"),
             new AdventureQuestion("Desdemona repeatedly asks you to forgive Cassio and make him lieutenant again. How do you respond to her?","607020Forgive Cassio.","504060Put it off.","503070Ignore her."), //only if answer before was throw a party
@@ -30,19 +24,19 @@ public class Screen extends JFrame implements ActionListener
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050Click any button to close game, Thanks for playing!")
     };
 
-    public int questionPlace=0;
-    JFrame window;
+    private int questionPlace=0;
+    //JFrame window;
 
 
-    AdventureQuestion questionNow = questions[questionPlace];
+    private AdventureQuestion questionNow = questions[questionPlace];
 
-    JButton buttonA= new JButton("A");
-    JButton buttonB= new JButton("B");
-    JButton buttonC= new JButton("C");
+    private JButton buttonA= new JButton("A");
+    private JButton buttonB= new JButton("B");
+    private JButton buttonC= new JButton("C");
 
-    JProgressBar Respect= new JProgressBar(0,100);
-    JProgressBar Sanity= new JProgressBar(0,100);
-    JProgressBar TrustInIago= new JProgressBar(0,100);
+    private JProgressBar Respect= new JProgressBar(0,100);
+    private JProgressBar Sanity= new JProgressBar(0,100);
+    private JProgressBar TrustInIago= new JProgressBar(0,100);
 
 
     private JTextArea displayQ;
@@ -50,7 +44,7 @@ public class Screen extends JFrame implements ActionListener
     private JTextArea displayB;
     private JTextArea displayC;
 
-    public Screen()
+    private Screen()
     {
         super("Othello Adventure Game");
 
@@ -117,7 +111,7 @@ public class Screen extends JFrame implements ActionListener
         c.add(Sanity);
         c.add(TrustInIago);
 
-        Respect.setString("Respect");
+        Respect.setString("Reputation");
         Respect.setStringPainted(true);
         Respect.setValue(80);
         Respect.setToolTipText("How much respect you have in the community");
@@ -178,10 +172,11 @@ public class Screen extends JFrame implements ActionListener
 
         questionPlace++;
 
-        if (Respect.getValue() <= 0 || TrustInIago.getValue()==100 || Sanity.getValue() == 0)
+        if ((Respect.getValue() <= 0 || TrustInIago.getValue()>=99 || Sanity.getValue() == 0) && questionPlace!= questions.length ) // help to close the game
         {
         questionPlace= questions.length-1;
-        //end game resonse later.
+        //questionPlace++;
+        //end game response later.
 
         }
 
@@ -197,7 +192,7 @@ public class Screen extends JFrame implements ActionListener
             //makes it so nothing happens when all questions or end game.
 
         }
-
+        //System.out.println(questionPlace);
         questionNow = questions[questionPlace];
         displayQ.setText(questions[questionPlace].getQuestion());
         displayB.setText(questions[questionPlace].getAnswerB().substring(6));
@@ -228,13 +223,29 @@ public class Screen extends JFrame implements ActionListener
 
         }
 
+        if (questionPlace == questions.length-1)
+        {
+            if (e.getSource() == buttonA) //end game text if you get to the last question. didn't die to bars.
+            {
+                displayA.setText("You learn from Desdemona about all the lies Iago has spread and order him to be imprisoned. You and Desdemona live happily ever after.");
+            }
+            else if (e.getSource()== buttonB)
+            {
+                displayA.setText("You kill Desdemona for supposedly cheating on you. Emilia walks in and turns you in to the authorities. You get imprisoned for the rest of your life.");
+            }
+            else
+            {
+                displayA.setText("Iago got his revenge, for you are left heartbroken and hysterical. You killed yourself and gave into Iago's manipulation.");
+            }
+        }
+
+
 
         ding.play();
 
-
     }
 
-    public void adjustBar(char ans)
+    private void adjustBar(char ans)
     {
         if (ans=='a')
         {
@@ -269,30 +280,7 @@ public class Screen extends JFrame implements ActionListener
         window.setVisible(true);
 
 
-//        try
-//        {
-//            BufferedImage myPicture = ImageIO.read(new File("/Users/benagin/Library/Mobile Documents/com~apple~CloudDocs/APCS/OthelloAdventure/68512519-cyprus-wallpapers.jpg"));
-//            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-//            window.add(picLabel);
-//            picLabel.setBounds(0,0,385,442);
-//        }
-//        catch(IOException e)
-//
-//
-//        {System.exit(3);}
     }
 }
 
-//class ImagePanel extends JComponent {
-//    private Image image;
-//    public ImagePanel(Image image) {
-//        this.image = image;
-//    }
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        g.drawImage(image, 0, 0, this);
-//    }
-//}
 
-    // elsewhere
