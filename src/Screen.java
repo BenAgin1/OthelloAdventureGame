@@ -28,15 +28,8 @@ public class Screen extends JFrame implements ActionListener
             //NEW: above 50 is increase, below is decrease.
             new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050Hillll", "505050HUihefsef"),
             new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "005050Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
-
-
-
-
-
-
             new AdventureQuestion( "You made it safely to Cyprus", "205050Throw a party to celebrate!","705050Get back to work, no time for playing.", " "),
             new AdventureQuestion("Desdemona repeatedly asks you to forgive Cassio and make him lieutenant again. How do you respond to her?","505030Forgive Cassio.","504050Put it off.","504040Ignore her."), //only if answer before was throw a party
-
             new AdventureQuestion("Lodovico greets you and Desdemona with news from Venice. Cassio will replace you, and you must return back to Venice. What do you do?","004050Hit Desdemona.","204050Call Desdemona a Strumpet.","606020Choose not to be mad at Desdemona without good reason"),
             new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "606000Stare at her lovingly and get into bed with her", "202080Suffocate her to death with a pillow.",  "106070Kill yourself."),
             new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venentian senate is watching. How do you respond?", "250000Avoid the question", "990000Politely deny it", "506050Attack Barbantio"),
@@ -60,7 +53,7 @@ public class Screen extends JFrame implements ActionListener
     JButton buttonB= new JButton("B");
     JButton buttonC= new JButton("C");
 
-    JProgressBar Respect= new JProgressBar(0,100);
+    JProgressBar Reputation= new JProgressBar(0,100);
     JProgressBar Sanity= new JProgressBar(0,100);
     JProgressBar TrustInIago= new JProgressBar(0,100);
 
@@ -140,14 +133,14 @@ public class Screen extends JFrame implements ActionListener
         c.add(displayC);
 
 
-        c.add(Respect);
+        c.add(Reputation);
         c.add(Sanity);
         c.add(TrustInIago);
 
-        Respect.setString("Respect");
-        Respect.setStringPainted(true);
-        Respect.setValue(80);
-        Respect.setToolTipText("How much respect you have in the community");
+        Reputation.setString("Reputation");
+        Reputation.setStringPainted(true);
+        Reputation.setValue(80);
+        Reputation.setToolTipText("How much you are respected in the community");
 
         Sanity.setString("Sanity");
         Sanity.setStringPainted(true);
@@ -192,7 +185,7 @@ public class Screen extends JFrame implements ActionListener
 
         questionPlace++;
 
-        if (Respect.getValue() <= 0 )
+        if (Reputation.getValue() <= 0 )
         {
         questionPlace= questions.length-1;
 
@@ -230,7 +223,7 @@ public class Screen extends JFrame implements ActionListener
 // buttonB.setToolTipText(questionNow.getAnswerB().substring(0,2)+" "+ questionNow.getAnswerB().substring(2,4)+" "+ questionNow.getAnswerB().substring(4,6));
 //        buttonA.setToolTipText(questionNow.getAnswerA().substring(0,2)+" "+ questionNow.getAnswerA().substring(2,4)+" "+ questionNow.getAnswerA().substring(4,6));
 
-        if (Respect.getValue() <= 0 )
+        if (Reputation.getValue() <= 0 )
         {
             displayA.setText("Your Reputation reached 0 because your people lost trust in you.");
 
@@ -247,21 +240,21 @@ public class Screen extends JFrame implements ActionListener
     {
         if (ans=='a')
         {
-            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerA())-50);
+            Reputation.setValue( Reputation.getValue()+ questionNow.getEffects(0, questionNow.getAnswerA())-50);
             Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerA())-50);
             TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerA())-50);
 
         }
         if (ans=='b')
         {
-            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerB())-50);
+            Reputation.setValue( Reputation.getValue()+ questionNow.getEffects(0, questionNow.getAnswerB())-50);
             Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerB())-50);
             TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerB())-50);
 
         }
         if (ans=='c')
         {
-            Respect.setValue( Respect.getValue()+ questionNow.getEffects(0, questionNow.getAnswerC())-50);
+            Reputation.setValue( Reputation.getValue()+ questionNow.getEffects(0, questionNow.getAnswerC())-50);
             Sanity.setValue( Sanity.getValue()+ questionNow.getEffects(2, questionNow.getAnswerC())-50);
             TrustInIago.setValue( TrustInIago.getValue()+ questionNow.getEffects(4, questionNow.getAnswerC())-50);
 
