@@ -24,14 +24,14 @@ public class Screen extends JFrame implements ActionListener
     {       //all questions that can be asked are added here, easy to change game length.
             //NEW: above 50 is increase, below is decrease.
             new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050 ", "505050 "),
-            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venetian senate is watching. How do you respond?", "305050Avoid the question", "605050Politely deny it", "202050Attack Barbantio"),
+            new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venetian senate is watching. How do you respond?", "305050Avoid the question", "655050Politely deny it", "002070Attack Barbantio"),
             new AdventureQuestion( "You made it safely to Cyprus", "405060Throw a party to celebrate!","605050Get back to work, no time for playing.", "505050 "),
-            new AdventureQuestion( "At the party, you find Cassio drunk and fighting with Roderigo and Montano. From Iago, you learn that Cassio has injured Montano in their quarrel. How do you reprimand him?", "504080Strip Cassio of his lieutenancy.", "605050Do nothing", "505050"),
+            new AdventureQuestion( "At the party, you find Cassio drunk and fighting with Roderigo and Montano. From Iago, you learn that Cassio has injured Montano in their quarrel. How do you reprimand him?", "504080Strip Cassio of his lieutenancy.", "505050Do nothing", "606050Give him another chance."),
             new AdventureQuestion("Desdemona repeatedly asks you to forgive Cassio and make him lieutenant again. How do you respond to her?","607020Forgive Cassio.","504060Put it off.","503070Ignore her."), //only if answer before was throw a party
-            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "303080Vow to kill her.", "504050Wait for more evidence before making a decision", "606010Choose to trust Desdemona over Iago"),
-            new AdventureQuestion( "You fall into an epileptic seizure after you are somewhat convinced that Desdmona is cheating on you. You see Cassio talking to Iago and holding the handkerchief, what do you do?", "503050Remain in hiding, building up anger.", "505050Now that you have proof, you are ready for revenge on Desdemona. You head to her bedroom.", "505050 "),
+            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "303080Vow to kill her.", "503550Wait for more evidence before making a decision", "607010Choose to believe Desdemona over Iago"),
+            new AdventureQuestion( "You fall into an epileptic seizure after you are somewhat convinced that Desdemona is cheating on you. You see Cassio talking to Iago and holding the handkerchief, what do you do?", "503050Remain in hiding, building up anger.", "505050Now that you have proof, you are ready for revenge on Desdemona. You head to her bedroom.", "505050 "),
             new AdventureQuestion("Lodovico greets you and Desdemona with news from Venice. Cassio will replace you, and you must return back to Venice. What do you do?","103070Hit Desdemona.","404070Call Desdemona a Strumpet.","505020Choose not to be mad at Desdemona without good reason"),
-            new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "508040Stare at her lovingly and get into bed with her", "303080Suffocate her to death with a pillow.",  "105030Kill yourself."),
+            new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "508040Stare at her lovingly and get into bed with her", "303080Suffocate her to death with a pillow.",  "103070Kill yourself."),
 
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050Click any button to close game, Thanks for playing!")
     };
@@ -252,7 +252,7 @@ public class Screen extends JFrame implements ActionListener
 
         if (TrustInIago.getValue() >= 99 )
         {
-            displayA.setText("Your Trust in Iago Bar has reached 100, so high that Iago abused your friendship to kill you.");
+            displayA.setText("Your Trust in Iago Bar has reached 100, which has allowed him to completely manipulate you. Iago abused your \"friendship\" and killed you.");
 
         }
 
