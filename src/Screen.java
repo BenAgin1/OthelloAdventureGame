@@ -18,7 +18,11 @@ public class Screen extends JFrame implements ActionListener
             new AdventureQuestion( "You made it safely to Cyprus", "405060Throw a party to celebrate!","605050Get back to work, no time for playing.", "505050 "),
             new AdventureQuestion( "At the party, you find Cassio drunk and fighting with Roderigo and Montano. From Iago, you learn that Cassio has injured Montano in their quarrel. How do you reprimand him?", "504080Strip Cassio of his lieutenancy.", "605050Do nothing", "505050"),
             new AdventureQuestion("Desdemona repeatedly asks you to forgive Cassio and make him lieutenant again. How do you respond to her?","607020Forgive Cassio.","504060Put it off.","503070Ignore her."), //only if answer before was throw a party
-            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "303080Vow to kill her.", "504050Wait for more evidence before making a decision", "606010Choose to trust Desdemona over Iago"),
+            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "303080Vow to kill her.", "504050Wait for more evidence before making a decision", "606010Choose to trust Desdemona over Iago"), //skip 2
+
+            new AdventureQuestion( "You fall into an epileptic seizure after you are somewhat convinced that Desdmona is cheating on you. You see Cassio talking to Iago and holding the handkerchief, what do you do?", "503050Remain in hiding, building up anger.", "505050Now that you have proof, you are ready for revenge on Desdemona. You head to her bedroom.", "505050 "), //skip next
+
+
             new AdventureQuestion("Lodovico greets you and Desdemona with news from Venice. Cassio will replace you, and you must return back to Venice. What do you do?","103070Hit Desdemona.","404070Call Desdemona a Strumpet.","505020Choose not to be mad at Desdemona without good reason"),
             new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "508040Stare at her lovingly and get into bed with her", "303080Suffocate her to death with a pillow.",  "105030Kill yourself."),
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050Click any button to close game, Thanks for playing!")
@@ -147,10 +151,21 @@ public class Screen extends JFrame implements ActionListener
             adjustBar('c');
         }
 
-
-        if ((e.getSource()==buttonB || e.getSource()==buttonC) && questionPlace == 2) //adds another to skip drunk Cassio
+        if ((e.getSource()==buttonB || e.getSource() == buttonC) && questionPlace == 2) //adds another to skip drunk Cassio
         {
             questionPlace+=2; //2 because next 2 deal with Cassio
+
+        }
+
+        if ((e.getSource()==buttonA && questionPlace == 5))//adds another to skip drunk Cassio
+        {
+            questionPlace+=2; //2 because next 2 deal with Cassio
+
+        }
+
+        if ((e.getSource()==buttonB && questionPlace == 6))//adds another to skip drunk Cassio
+        {
+            questionPlace+=1; //2 because next 2 deal with Cassio
 
         }
 
