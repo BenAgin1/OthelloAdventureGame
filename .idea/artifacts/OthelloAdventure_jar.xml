@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OthelloAdventure:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OthelloAdventure_jar</output-path>
+    <root id="archive" name="OthelloAdventure.jar">
+      <element id="module-output" name="OthelloAdventure" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/StudentFiles 2/EasyClasses/EasyClasses.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EasyClasses.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

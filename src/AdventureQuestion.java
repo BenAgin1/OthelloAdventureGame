@@ -1,11 +1,21 @@
 //Look something changed
+//?
+/**
+ *
+ * @author Ben Agin and Sarah Zhang
+ * @version March 17, 2018
+ * \@assignment Othello Adventure Game
+ *
+ *Using IntelliJ
+ *
+ */
 
-public class AdventureQuestion
+class AdventureQuestion
 {
     private String question;
     private String answerA,answerB,answerC;
 
-    public AdventureQuestion(String question, String answerA, String answerB, String answerC)
+    AdventureQuestion(String question, String answerA, String answerB, String answerC)
     {
         this.question=question;
         this.answerA=answerA;
@@ -13,37 +23,31 @@ public class AdventureQuestion
         this.answerC=answerC;
     }
 
-    public  String getQuestion()
+    String getQuestion()
     {
         return question;
     }
 
-    public  String getAnswerA()
+    String getAnswerA()
     {
-        return answerA;//.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
+        return answerA;
     }
 
-    public  String getAnswerB()
+    String getAnswerB()
     {
-        return answerB;//.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
+        return answerB;
     }
 
-    public String getAnswerC()
+    String getAnswerC()
     {
-        return answerC;//.substring(6); //because the first 2 chars determine the effect on sanity and Iago trust.
+        return answerC;
     }
-    public  int getEffects(int whichBar, String answer) //0, 2, 4 for each bar
+
+    //converts the answers to the effects on bars
+    int getEffects(int whichBar, String answer) //0, 2, 4 for each bar
     {
         return Integer.parseInt(answer.substring(whichBar,whichBar+2));
     }
 
-
-
-
-    //public static int getBarMods
-
-
-
 }
 
-//250000Avoid the question.

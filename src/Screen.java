@@ -1,3 +1,13 @@
+/**
+ *
+ * @author Ben Agin and Sarah Zhang
+ * @version March 17, 2018
+ * \@assignment Othello Adventure Game
+ *
+ *Using IntelliJ
+ *
+ */
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -10,34 +20,33 @@ public class Screen extends JFrame implements ActionListener
     private static final int MAX_NUMBER_ROWS= 5;
     private static final int MAX_NUMBER_COLS=30;
 
-    private AdventureQuestion[] questions= //add the questions here, and effects as well
-    {//I will edit it later to not show the numbers right in front.
+    private AdventureQuestion[] questions=
+    {       //all questions that can be asked are added here, easy to change game length.
             //NEW: above 50 is increase, below is decrease.
             new AdventureQuestion("THIS IS A FILL, WONT SHOW", "505050Avoid the question", "505050 ", "505050 "),
             new AdventureQuestion("Barbantio accuses you of bewitching his daughter into marrying you while the entire Venetian senate is watching. How do you respond?", "305050Avoid the question", "605050Politely deny it", "202050Attack Barbantio"),
             new AdventureQuestion( "You made it safely to Cyprus", "405060Throw a party to celebrate!","605050Get back to work, no time for playing.", "505050 "),
             new AdventureQuestion( "At the party, you find Cassio drunk and fighting with Roderigo and Montano. From Iago, you learn that Cassio has injured Montano in their quarrel. How do you reprimand him?", "504080Strip Cassio of his lieutenancy.", "605050Do nothing", "505050"),
             new AdventureQuestion("Desdemona repeatedly asks you to forgive Cassio and make him lieutenant again. How do you respond to her?","607020Forgive Cassio.","504060Put it off.","503070Ignore her."), //only if answer before was throw a party
-            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "303080Vow to kill her.", "504050Wait for more evidence before making a decision", "606010Choose to trust Desdemona over Iago"), //skip 2
-
-            new AdventureQuestion( "You fall into an epileptic seizure after you are somewhat convinced that Desdmona is cheating on you. You see Cassio talking to Iago and holding the handkerchief, what do you do?", "503050Remain in hiding, building up anger.", "505050Now that you have proof, you are ready for revenge on Desdemona. You head to her bedroom.", "505050 "), //skip next
-
-
+            new AdventureQuestion( "Iago acts suspiciously, suggesting that Desdemona is having an affair with Cassio. He tells you that he saw Cassio use the handkerchief YOU gave her to wipe his beard. How will you react?", "303080Vow to kill her.", "504050Wait for more evidence before making a decision", "606010Choose to trust Desdemona over Iago"),
+            new AdventureQuestion( "You fall into an epileptic seizure after you are somewhat convinced that Desdmona is cheating on you. You see Cassio talking to Iago and holding the handkerchief, what do you do?", "503050Remain in hiding, building up anger.", "505050Now that you have proof, you are ready for revenge on Desdemona. You head to her bedroom.", "505050 "),
             new AdventureQuestion("Lodovico greets you and Desdemona with news from Venice. Cassio will replace you, and you must return back to Venice. What do you do?","103070Hit Desdemona.","404070Call Desdemona a Strumpet.","505020Choose not to be mad at Desdemona without good reason"),
             new AdventureQuestion("You find Desdemona sleeping peacefully in bed at night. What’s your move?", "508040Stare at her lovingly and get into bed with her", "303080Suffocate her to death with a pillow.",  "105030Kill yourself."),
+
             new AdventureQuestion("The end of Game", "505050 ", "505050 ", "505050Click any button to close game, Thanks for playing!")
     };
 
     private int questionPlace=0;
-    //JFrame window;
 
 
-    private AdventureQuestion questionNow = questions[questionPlace];
+
+    private AdventureQuestion questionNow = questions[questionPlace]; //how it keeps track of question it is on now
 
     private JButton buttonA= new JButton("A");
     private JButton buttonB= new JButton("B");
     private JButton buttonC= new JButton("C");
 
+                        //"Reputation" bar
     private JProgressBar Respect= new JProgressBar(0,100);
     private JProgressBar Sanity= new JProgressBar(0,100);
     private JProgressBar TrustInIago= new JProgressBar(0,100);
@@ -48,6 +57,7 @@ public class Screen extends JFrame implements ActionListener
     private JTextArea displayB;
     private JTextArea displayC;
 
+    //this initializes the window when window object is constructed
     private Screen()
     {
         super("Othello Adventure Game");
@@ -96,6 +106,7 @@ public class Screen extends JFrame implements ActionListener
         displayC.setEditable(false);
 
 
+        //adding components to the screen
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
 
@@ -151,6 +162,8 @@ public class Screen extends JFrame implements ActionListener
             adjustBar('c');
         }
 
+
+        /**  These is for the branching of stories, depends on user input    */
         if ((e.getSource()==buttonB || e.getSource() == buttonC) && questionPlace == 2) //adds another to skip drunk Cassio
         {
             questionPlace+=2; //2 because next 2 deal with Cassio
@@ -169,13 +182,14 @@ public class Screen extends JFrame implements ActionListener
 
         }
 
+
+
         questionPlace++;
 
         if ((Respect.getValue() <= 0 || TrustInIago.getValue()>=99 || Sanity.getValue() == 0) && questionPlace!= questions.length ) // help to close the game
         {
         questionPlace= questions.length-1;
-        //questionPlace++;
-        //end game response later.
+        //end game response when bars get to their values.
 
         }
 
@@ -183,15 +197,15 @@ public class Screen extends JFrame implements ActionListener
         if (questionPlace>=questions.length)
         {
 
-            //if (questionPlace>questions.length) ;
 
+            //to close game
             ding.play();
             System.exit(1);
-            return;
-            //makes it so nothing happens when all questions or end game.
+
+
 
         }
-        //System.out.println(questionPlace);
+
         questionNow = questions[questionPlace];
         displayQ.setText(questions[questionPlace].getQuestion());
         displayB.setText(questions[questionPlace].getAnswerB().substring(6));
@@ -199,11 +213,14 @@ public class Screen extends JFrame implements ActionListener
         displayC.setText(questions[questionPlace].getAnswerC().substring(6));
 
 
+        //shows the effects of all choices
         buttonA.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerA())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerA())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerA())-50));
         buttonB.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerB())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerB())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerB ())-50));
         buttonC.setToolTipText((questionNow.getEffects(0, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(2, questionNow.getAnswerC())-50)+" "+ (questionNow.getEffects(4, questionNow.getAnswerC())-50));
 
 
+
+        //last question response prompts
         if (questionPlace == questions.length-1)
         {
             if (e.getSource() == buttonA) //end game text if you get to the last question. didn't die to bars.
@@ -220,6 +237,7 @@ public class Screen extends JFrame implements ActionListener
             }
         }
 
+        //bar threshold response prompts
         if (Respect.getValue() <= 0 )
         {
             displayA.setText("Your Reputation reached 0 because your people lost trust in you.");
@@ -242,6 +260,7 @@ public class Screen extends JFrame implements ActionListener
 
     }
 
+    //changes bars
     private void adjustBar(char ans)
     {
         if (ans=='a')
